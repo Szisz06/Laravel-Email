@@ -13,13 +13,13 @@ class DemoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
+    public $mailData;
+
+    public function __construct($mailData)
     {
-        //
+       	$this->mailData = $mailData;
     }
+
 
     /**
      * Get the message envelope.
@@ -37,7 +37,9 @@ class DemoMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            //resources/views mappán belül
+            //email nevű mappában a test.blade.php
+            view: 'email.test',
         );
     }
 
